@@ -7,7 +7,6 @@ button.addEventListener('click', () => {
 .catch(error => alert('Cidade Inválida!'))
 })
 
-
 addEventListener('keypress', event => {
     if(event.keyCode === 13) {
         axios(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(input.value)}&appid=ec12a89e4e02bfa66ad0671d31ccd7cb&units=metric&lang=pt_br`)
@@ -15,8 +14,6 @@ addEventListener('keypress', event => {
         .catch(error => alert('Cidade Inválida!'))        
     }
 })
-
-
 
 const cityWeather = response => {
 const displayTemperature = document.querySelector('.temperatura');
@@ -42,6 +39,6 @@ else if(weather[0].description === 'céu limpo') img.src  = '/img/danieledesanti
 
 else if(weather[0].description === 'nuvens dispersas') img.src = '/img/danieledesantis-weather-icons-cloudy-3.svg'
 
-else img.src = 'danieledesantis-weather-icons-rainy-2'
+else if(weather[0].description === 'chuva leve') img.src = '/img/danieledesantis-weather-icons-rainy.svg'
 
 }
