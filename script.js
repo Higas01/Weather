@@ -8,6 +8,16 @@ button.addEventListener('click', () => {
 })
 
 
+addEventListener('keypress', event => {
+    if(event.keyCode === 13) {
+        axios(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(input.value)}&appid=ec12a89e4e02bfa66ad0671d31ccd7cb&units=metric&lang=pt_br`)
+        .then(response => cityWeather(response.data))
+        .catch(error => alert('Cidade Inválida!'))        
+    }
+})
+
+
+
 const cityWeather = response => {
 const displayTemperature = document.querySelector('.temperatura');
 const {main, weather} = response;
@@ -35,8 +45,3 @@ else if(weather[0].description === 'nuvens dispersas') img.src = '/img/danielede
 else img.src = 'danieledesantis-weather-icons-rainy-2'
 
 }
-
-
-
-
-
